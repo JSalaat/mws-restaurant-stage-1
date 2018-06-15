@@ -258,10 +258,12 @@ nav h1 a {
 }
 #restaurant-img {
   width: 100%;
+  border-radius: 20px 0;
 }
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 0px;
+  text-align: center;
 }
 #restaurant-cuisine {
   background-color: #333;
@@ -302,18 +304,24 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
   padding: 20px;
   position: relative;
-  width: 95%;
+  width: 90%;
+  border-radius: 20px 0;
 }
 #reviews-list li p {
   margin: 0 0 10px;
 }
 #restaurant-hours td {
   color: #666;
+}
+.ratings-el{
+  text-align: right;
+  color: blue;
+  font-weight: 500;
 }
