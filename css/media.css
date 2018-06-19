@@ -3,7 +3,7 @@
         width: calc(90% / 2);
     }
     .flex-item {
-        width: 50%;
+        width: 100%;
     }
     #restaurant-info {
         padding: 60px 20px;
@@ -15,9 +15,6 @@
     }
     #reviews-container {
         width: 40%;
-    }
-    .flex-item {
-        width: 100%;
     }
 }
 @media screen and (min-width: 1024px) {

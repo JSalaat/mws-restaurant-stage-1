@@ -73,6 +73,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   min-height: 100%;
   display: flex;
   flex-flow: row wrap;
+  padding: 0 5px;
 }
 #footer {
   background-color: #444;
@@ -245,6 +246,11 @@ nav h1 a {
   background-color: #ccc;
   height: 100%;
   width: 100%;
+}
+.flex-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
 }
 #restaurant-name {
   color: #f18200;
