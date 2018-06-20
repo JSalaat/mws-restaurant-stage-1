@@ -33,14 +33,14 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map" aria-label="Map with current restaurant location"></div>
+      <div id="map" role="application" aria-label="Map with current restaurant location"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container" aria-label="Restaurant details">
       <div class="flex-container">
         <div class="flex-item">
-          <h1 id="restaurant-name"></h1>
+          <h2 id="restaurant-name"></h2>
           <div id="restaurant-img">
           <p id="restaurant-cuisine"></p>
         </div>
@@ -72,6 +72,8 @@
   <script type="text/javascript" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0AiblVgPpW1XiHBRme4XuanRZwy4FbGo&libraries=places&callback=initMap"></script>
+
+
   <!-- End scripts -->
 
 </body>

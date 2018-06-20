@@ -7,6 +7,7 @@ const staticCacheName = 'restaurant-review-v1';
  * Install service worker and cache assets
  */
 const assets = [
+    '/',
     'index.html',
     'restaurant.html',
     'js/main.js',
@@ -78,11 +79,21 @@ self.addEventListener('activate', event => {
 /**
  * Intercept requests and fetch them from cache first with network fallback
  */
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function (event) {
+    const requestUrl = new URL(event.request.url);
+
+    if (requestUrl.origin === location.origin) {
+        if (requestUrl.pathname === '/') {
+            event.respondWith(
+                caches.match('index.html')
+            );
+            return;
+        }
+    }
+
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
-            })
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
     );
 });

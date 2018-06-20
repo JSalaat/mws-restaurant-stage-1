@@ -20,7 +20,7 @@
 
   <main id="maincontent">
     <section id="map-container">
-      <div id="map" aria-label="Map with restaurants"></div>
+      <div id="map" role="application" aria-label="Map with restaurants"></div>
     </section>
     <section>
       <div class="filter-options">
@@ -41,14 +41,7 @@
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0AiblVgPpW1XiHBRme4XuanRZwy4FbGo&libraries=places&callback=initMap"></script>
-  <script>
-      if('serviceWorker' in navigator) {
-          navigator.serviceWorker
-              .register('/serviceWorker.js')
-              .then(function() { console.log("Service Worker Registered"); })
-              .catch(function(error) { console.log('Registration failed with ' + error); });
-      }
-  </script>
+
 
   <footer id="footer">
     Copyright (c) 2017

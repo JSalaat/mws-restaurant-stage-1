@@ -11,7 +11,37 @@ var markers = [];
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
+  registerServiceWorker();
 });
+
+registerServiceWorker = () => {
+    if (!navigator.serviceWorker) {
+        console.warn('[registerServiceWorker] No service worker available in browser.');
+    }
+
+    navigator.serviceWorker.register('/serviceWorker.js').then(function(reg) {
+        if (!navigator.serviceWorker.controller) {
+            console.warn('[serviceWorker.register] No controller. Aborting.');
+            return;
+        }
+
+        if (reg.waiting) {
+            console.log('[serviceWorker.register] State::Waiting');
+            return;
+        }
+
+        if (reg.installing) {
+            console.log('[serviceWorker.register] State::Installing');
+            reg.installing.addEventListener('statechange', (worker) => {
+                if (worker.state === 'installed') {
+                    console.log('[serviceWorker.register] StateChange::Installed');
+                }
+            });
+            return;
+        }
+        console.log(reg);
+    });
+};
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -150,7 +180,7 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
-  image.alt = 'Restaurant Image';
+  image.alt = `Image for Restaurant ${restaurant.name}`;
   image.setAttribute('aria-label', `Restaurant ${restaurant.name} image`);
   image.src = DBHelper.imageUrlForRestaurant(restaurant).replace(".jpg", "");
 
@@ -162,7 +192,7 @@ createRestaurantHTML = (restaurant) => {
   pictureEl.append(image);
   li.append(pictureEl);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
